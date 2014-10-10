@@ -1,4 +1,4 @@
-
+# A Salt formula for installing MySQL with basic tuning
 
 This formula installs mysql and generates a mysql root user password in
 addition to some very basic tuning based on the total system memory available.
