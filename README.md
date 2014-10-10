@@ -1,4 +1,4 @@
-# A Salt formula for installing mysql
+
 
 This formula installs mysql and generates a mysql root user password in
 addition to some very basic tuning based on the total system memory available.
@@ -49,6 +49,7 @@ salt <sync-targets> state.highstate
 Or if applying explicitly:
 ```shell
 salt <sync-targets> state.sls mysql
+```
 
 #### Helpful links
 * [MySQL](http://www.mysql.com/)
