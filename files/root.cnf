@@ -1,3 +1,4 @@
+### Created by salt ###
 [client]
 user=root
 password={{ password }}

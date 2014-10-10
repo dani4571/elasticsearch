@@ -1,15 +1,15 @@
-{% set total_mem = (salt['grains.get']('mem_total'))|int %}
-{% set leftover_mem = (total_mem * 0.2)|int %}
-{% if leftover_mem < 256 %}
-{%    set leftover_mem = 256 %}
-{% endif %}
-
-{% set rec_key_buffer_size = (total_mem * 0.05)|int %}
-{% set key_buffer_size = salt['pillar.get']('mysql:key_buffer_size', '%sM' % rec_key_buffer_size) %}
-
-{% set rec_innodb_buffer_size = total_mem - leftover_mem - rec_key_buffer_size %}
-{% set innodb_buffer_pool_size = salt['pillar.get']('mysql:innodb_buffer_pool_size', '%sM' % rec_innodb_buffer_size) %} 
-
+### Managed by salt ###
+# Set a few parameters based on total system memory
+{%- set total_mem = (salt['grains.get']('mem_total'))|int -%}
+{%- set leftover_mem = (total_mem * 0.2)|int -%}
+{%- if leftover_mem < 256 -%}
+{%-    set leftover_mem = 256 -%}
+{%- endif -%}
+{%- set rec_key_buffer_size = (total_mem * 0.05)|int -%}
+{%- set key_buffer_size = salt['pillar.get']('mysql:key_buffer_size', '%sM' % rec_key_buffer_size) -%}
+{%- set rec_innodb_buffer_size = total_mem - leftover_mem - rec_key_buffer_size -%}
+{%- set innodb_buffer_pool_size = salt['pillar.get']('mysql:innodb_buffer_pool_size', '%sM' % rec_innodb_buffer_size) -%}
+{%- set interface = salt['pillar.get']('interfaces:private', 'eth0') -%}
 # The MySQL database server configuration file.
 #
 # You can copy this to one of:
@@ -55,7 +55,7 @@ skip-external-locking
 #
 # Instead of skip-networking the default is now to listen only on
 # localhost which is more compatible and is not less secure.
-bind-address		= {{ grains['ip_interfaces'][salt['pillar.get']('interfaces:private', 'eth0')][0] }}
+bind-address		= {{ salt['network.ipaddrs'](interface)[0] }}
 #
 # * Fine Tuning
 #

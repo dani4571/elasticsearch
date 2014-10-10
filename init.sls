@@ -1,3 +1,6 @@
+# Install mysql, a mysql client, and run a brief attempt at tuning based on
+# available system memory.
+
 mysql-software:
   pkg.installed:
     - pkgs:
@@ -20,6 +23,8 @@ mysql-server:
     - watch:
       - file: /etc/mysql/my.cnf
 
+# When installing mysql by itself, no root password is set
+# Generate a random root password and save in /root/.my.cnf
 {% if 1 == salt['cmd.retcode']('test -f /root/.my.cnf') %}
 {% set pw = salt['cmd.run']('openssl rand -base64 32').split()[0] %}
 
