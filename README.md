@@ -51,4 +51,4 @@ Or if applying explicitly:
 salt <sync-targets> state.sls mysql
 
 #### Helpful links
-[MySQL](http://www.mysql.com/)
+* [MySQL](http://www.mysql.com/)
