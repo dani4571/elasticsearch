@@ -40,3 +40,15 @@ parameters are always set:
 innodb_flush_method     = O_DIRECT
 innodb_flush_log_at_trx_commit = 1
 ```
+
+#### How to use
+If applying from a top file:
+```shell
+salt <sync-targets> state.highstate
+```
+Or if applying explicitly:
+```shell
+salt <sync-targets> state.sls mysql
+
+#### Helpful links
+[MySQL](http://www.mysql.com/)
