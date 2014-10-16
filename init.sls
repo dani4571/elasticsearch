@@ -2,4 +2,4 @@
 # available system memory.
 
 include:
-  - java
+  - salt-java
