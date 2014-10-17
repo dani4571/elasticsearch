@@ -32,4 +32,4 @@ elasticsearch:
     - group: root
     - mode: 644
     - template: jinja
-    - source: salt://elasticsearch/elasticsearch.yml
+    - source: salt://elasticsearch/files/elasticsearch.yml
